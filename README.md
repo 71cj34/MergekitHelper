@@ -40,5 +40,6 @@ Thanks to the amazing [mergekit](https://github.com/arcee-ai/mergekit/) by Arcee
 # Extra Information
 
 [mergekit's examples](https://github.com/arcee-ai/mergekit/tree/main/examples)
+Write an issue if something goes wrong so I can fix it quickly!
 
 Jason Cheng, last updated 2024
