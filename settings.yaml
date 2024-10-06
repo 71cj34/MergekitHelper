@@ -1,0 +1,6 @@
+condaPath: ""
+mergekitConfigPath: ""
+outputPath: ""
+llamacppBinPath: ""
+llamacppPath: ""
+useCUDA: false
