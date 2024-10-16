@@ -21,7 +21,7 @@ Simple batch-Python utility to merge, quantize, and count parameters.
 3. Clone llamacpp with `git clone https://github.com/ggerganov/llama.cpp` or an analogue into a folder of your choice.
 4. Download and unzip MergekitHelper from the releases section.
 5. Set up paths in the `settings.yaml` file in the MergekitHelper folder.
-	- condaPath (folder): where your anaconda installation is.
+	- condaPath (folder): where your anaconda installation is. **Make sure you have the `transformers` library installed on your base conda environment.** (Not sure? Use the Windows search bar to find a program called "Anaconda Prompt" and type `conda list`. If `transformers` isn't there, type `conda install transformers`.)
 	- mergekitConfigPath (path ending in *.yaml): where your mergekit config.yaml file is. This file determines the settings for your merge.
 	- outputPath (folder): where you want to output your finished merges.
 	- llamacppBinPath (folder): where your llamacpp binaries are (the folder you downloaded from the llamacpp releases section).
@@ -32,6 +32,15 @@ Simple batch-Python utility to merge, quantize, and count parameters.
 7. Kick back and enjoy!
 
 Also included is a batch file to quantize only without the merging  (`quantize.bat`), the python file that counts parameters (`countparameters.py`), and a dev version `countparameters_dev.py` with print statements to use as a standalone program.
+
+# Known Issues
+Sometimes, mergekit won't create the `tokenizer.json` file properly. I have no clue why this happens, but it seems more prominent on Gemma-based models. Just close the `merge.bat` window, download the architecture's appropriate tokenizer (head to the Huggingface page of one of the architecture's models and download it from the file list), put it into your output folder, and use the `quantize.bat` file to quantize instead.
+
+# Roadmap
+
+- Support for pip and poetry (made slightly more difficult because I don't know how poetry works at all)
+- Error handler for both mergekithelper and mergekit
+- Support for other operating systems (again, made slightly more difficult because I've never used MacOS, Linux, or their ecosystems in my life)
 
 # Credits
 
