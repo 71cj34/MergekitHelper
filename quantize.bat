@@ -10,6 +10,7 @@ for /f "tokens=2 delims== " %%a in ('yq e ".llamacppPath" %YAML_FILE%') do set L
 for /f "tokens=2 delims== " %%a in ('yq e ".useCUDA" %YAML_FILE%') do set CUDA=%%a
 
 set /p SimpleMode=Do you want to run in Simple Mode (only create Q4_K_M)? (y/n): 
+set /p ModelName=Enter the name for your model: 
 
 cd %LLAMA_PATH%
 
@@ -29,18 +30,18 @@ if not defined A (
 )
 
 if /I "%SimpleMode%"=="y" (
-    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%.Q4_K_M.gguf Q4_K_M
+    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%-Q4_K_M.gguf Q4_K_M
 ) else (
-    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%.Q2_K.gguf Q2_K
-    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%.Q3_K_S.gguf Q3_K_S
-    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%.Q3_K_M.gguf Q3_K_M
-    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%.Q3_K_L.gguf Q3_K_L
-    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%.Q4_K_S.gguf Q4_K_S
-    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%.Q4_K_M.gguf Q4_K_M
-    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%.Q5_K_S.gguf Q5_K_S
-    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%.Q5_K_M.gguf Q5_K_M
-    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%.Q6_K.gguf Q6_K
-    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%.Q8_0.gguf Q8_0
+    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%-Q2_K.gguf Q2_K
+    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%-Q3_K_S.gguf Q3_K_S
+    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%-Q3_K_M.gguf Q3_K_M
+    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%-Q3_K_L.gguf Q3_K_L
+    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%-Q4_K_S.gguf Q4_K_S
+    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%-Q4_K_M.gguf Q4_K_M
+    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%-Q5_K_S.gguf Q5_K_S
+    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%-Q5_K_M.gguf Q5_K_M
+    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%-Q6_K.gguf Q6_K
+    %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%-Q8_0.gguf Q8_0
 )
 
 echo Script completed successfully.
