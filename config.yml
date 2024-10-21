@@ -1,0 +1,23 @@
+# Welcome to MergekitHelper!
+#
+# This file is the config.yml file that mergekit uses to generate merges.
+# Here's an example config!
+
+models:
+  - model: princeton-nlp/gemma-2-9b-it-SimPO
+  - model: tannedbum/Ellaria-9B
+    parameters:
+      density: 0.25
+      weight: 0.6
+  - model: lemon07r/Gemma-2-Ataraxy-9B
+    parameters:
+      density: 0.75
+      weight: 0.8
+merge_method: della
+base_model: princeton-nlp/gemma-2-9b-it-SimPO
+parameters:
+  normalize: true
+  int8_mask: true
+  lambda: 1
+  epsilon: 0.25
+dtype: float16
