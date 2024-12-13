@@ -29,6 +29,11 @@ Simple batch-Python utility to merge, quantize, and count parameters.
 
 Also included is a batch file to quantize only without the merging  (`quantize.bat`), the python file that counts parameters (`countparameters.py`), and a dev version `countparameters_dev.py` with print statements to use as a standalone program.
 
+# Changelog
+**v1.0.0** (Oct 5 2024): Release
+**v1.0.1** (Oct 20 2024): Add roadmap and known issues to README + example config
+**v1.1.0** (Dec 12 2024): Add `seeavailablemodels.ps1`: will begin moving away from batch in future (the lack of proper regex/find and replace is killing me!!)
+
 # Known Issues
 Sometimes, mergekit won't create the `tokenizer.json` file properly. I have no clue why this happens, but it seems more prominent on Gemma-based models. Just close the `merge.bat` window, download the architecture's appropriate tokenizer (head to the Huggingface page of one of the architecture's models and download it from the file list), put it into your output folder, and use the `quantize.bat` file to quantize instead.
 
