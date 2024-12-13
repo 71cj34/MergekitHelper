@@ -14,20 +14,23 @@ set /p ModelName=Enter the name for your model:
 
 cd %LLAMA_PATH%
 
-py %LLAMA_PATH%\convert_hf_to_gguf.py %OUTPUT_PATH%
 
 for /R "%OUTPUT_PATH%" %%F in (*F16*) do (
     set "A=%%F"
     goto :found
 )
 
+if not defined A (
+    echo No F16 file found. Creating...
+    py %LLAMA_PATH%\convert_hf_to_gguf.py %OUTPUT_PATH%
+)
+
 :found
 
-if not defined A (
-    echo No file with "F16" in its name was found.
-    pause
-    exit /b 1
-)
+call conda activate
+python countparameters.py
+for /f "delims=" %%i in ('python countparameters.py') do set ParamCount=%%i
+call conda deactivate
 
 if /I "%SimpleMode%"=="y" (
     %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%-Q4_K_M.gguf Q4_K_M

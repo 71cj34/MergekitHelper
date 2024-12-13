@@ -75,6 +75,7 @@ if "%ParamCount%"=="" (
 )
 
 echo Estimated paramcount is: %ParamCount%
+echo It is recommended to check if there are any errors in the console now before continuing.
 pause
 
 cd %LLAMA_PATH%
@@ -89,7 +90,8 @@ for /R "%OUTPUT_PATH%" %%F in (*F16*) do (
 :found
 
 if not defined A (
-    echo No file with "F16" in its name was found.
+    echo No file with "F16" in its name was found. Check your output path, %OUTPUT_PATH%, for an F16 file.
+    echo Otherwise, check above for any errors from the conversion process.
     pause
     exit /b 1
 )
@@ -109,7 +111,7 @@ if /I "%SimpleMode%"=="y" (
     %LLAMA_BINPATH%\llama-quantize.exe "%A%" %OUTPUT_PATH%\%ModelName%-%ParamCount%.Q8_0.gguf Q8_0
 )
 
-echo Script completed successfully.
+echo Script completed successfully. Quantized models available at %OUTPUT_PATH%.
 pause
 
 
