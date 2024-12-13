@@ -8,7 +8,7 @@ Get-ChildItem -Path $path -Directory | ForEach-Object {
     try {$modifiedName = $folderName.Substring(8)}
     catch {}
 
-    $modifiedName = $modifiedName -replace "t--", "/"
+    $modifiedName = $modifiedName -replace "--", "/"
 
     Write-Host $modifiedName
 
