@@ -23,6 +23,11 @@ for /R "%OUTPUT_PATH%" %%F in (*F16*) do (
 if not defined A (
     echo No F16 file found. Creating...
     py %LLAMA_PATH%\convert_hf_to_gguf.py %OUTPUT_PATH%
+    for /R "%OUTPUT_PATH%" %%F in (*F16*) do (
+        set "A=%%F"
+        goto :found
+    )
+    echo F16 file creation failed (could not be found). Check your console for errors
 )
 
 :found
