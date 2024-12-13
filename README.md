@@ -26,7 +26,7 @@ Simple batch-Python utility to merge, quantize, and count parameters.
 	- mergekitConfigPath (path ending in *.yaml): where your mergekit config.yaml file is. This file determines the settings for your merge.
 	- outputPath (folder): where you want to output your finished merges.
 	- llamacppBinPath (folder): where your llamacpp binaries are (the folder you downloaded from the llamacpp releases section).
-6 (Optional). If you would like to use the included `showavailablemodels.ps1` module, you will have to turn on **powershell script execution**. Here is how to do it:
+6. If you would like to use the included `showavailablemodels.ps1` module, you will have to turn on **powershell script execution**. Here is how to do it:
 	- Type `Win + R`.
 	- Enter `powershell` and hit `Ctrl + Shift + Enter`. Agree to the administrator permission popup.
 	- Copy and paste (or type) `set-executionpolicy remotesigned`.
@@ -37,9 +37,13 @@ Also included is a batch file to quantize only without the merging  (`quantize.b
 
 # Changelog
 **v1.0.0** (Oct 5 2024): Release
+
 **v1.0.1** (Oct 20 2024): Add roadmap and known issues to README + example config
-**v1.1.0** (Dec 12 2024): Add `seeavailablemodels.ps1`: will begin moving away from batch in future (the lack of proper regex/find and replace is killing me!!). Also fixed small issue with the README
+
+**v1.1.0** (Dec 12 2024): Add `seeavailablemodels.ps1`: will begin moving away from batch in future (the lack of proper regex/find and replace is killing me!!)
+
 **v1.1.1** (Dec 13 2024): Add new `skipF16` option to `quantize.bat` to skip the HF to GGUF conversion step. v1.1.0 accidentally pushed a staging version of merge.bat with experimental support for other package managers, but it seems to still work on my machine so it's staying there. Keep in mind that support for other package managers is still **beta**. Fixed issue with `ParamCount` not correctly updating for `quantize.bat`, fixed ambiguous pauses in `merge.bat`, and added debug statements to help resolve runtime errors all around.
+
 
 # Known Issues
 Sometimes, mergekit won't create the `tokenizer.json` file properly. I have no clue why this happens, but it seems more prominent on Gemma-based models. Just close the `merge.bat` window, download the architecture's appropriate tokenizer (head to the Huggingface page of one of the architecture's models and download it from the file list), put it into your output folder, and use the `quantize.bat` file to quantize instead.
