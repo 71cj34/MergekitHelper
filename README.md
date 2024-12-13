@@ -37,7 +37,9 @@ Also included is a batch file to quantize only without the merging  (`quantize.b
 
 # Changelog
 **v1.0.0** (Oct 5 2024): Release
+
 **v1.0.1** (Oct 20 2024): Add roadmap and known issues to README + example config
+
 **v1.1.0** (Dec 12 2024): Add `seeavailablemodels.ps1`: will begin moving away from batch in future (the lack of proper regex/find and replace is killing me!!)
 
 # Known Issues
