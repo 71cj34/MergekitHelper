@@ -26,6 +26,12 @@ Simple batch-Python utility to merge, quantize, and count parameters.
 	- mergekitConfigPath (path ending in *.yaml): where your mergekit config.yaml file is. This file determines the settings for your merge.
 	- outputPath (folder): where you want to output your finished merges.
 	- llamacppBinPath (folder): where your llamacpp binaries are (the folder you downloaded from the llamacpp releases section).
+6 (Optional). If you would like to use the included `showavailablemodels.ps1` module, you will have to turn on **powershell script execution**. Here is how to do it:
+	- Type `Win + R`.
+	- Enter `powershell` and hit `Ctrl + Shift + Enter`. Agree to the administrator permission popup.
+	- Copy and paste (or type) `set-executionpolicy remotesigned`.
+	- Either enter `Y` or `A`.
+	- To run the .ps1 file, right click on it and select "Run with Powershell".
 
 Also included is a batch file to quantize only without the merging  (`quantize.bat`), the python file that counts parameters (`countparameters.py`), and a dev version `countparameters_dev.py` with print statements to use as a standalone program.
 
