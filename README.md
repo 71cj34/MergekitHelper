@@ -44,6 +44,7 @@ Also included is a batch file to quantize only without the merging  (`quantize.b
 
 **v1.1.1** (Dec 13 2024): Add new `skipF16` option to `quantize.bat` to skip the HF to GGUF conversion step. v1.1.0 accidentally pushed a staging version of merge.bat with experimental support for other package managers, but it seems to still work on my machine so it's staying there. Keep in mind that support for other package managers is still **beta**. Fixed issue with `ParamCount` not correctly updating for `quantize.bat`, fixed ambiguous pauses in `merge.bat`, and added debug statements to help resolve runtime errors all around.
 
+**v1.1.2** (Dec 16 2024): Add new `updatedependencies.bat` file to `git pull` llamacpp and mergekit. Requires you to fill a new setting in `settings.yml`. 
 
 # Known Issues
 Sometimes, mergekit won't create the `tokenizer.json` file properly. I have no clue why this happens, but it seems more prominent on Gemma-based models. Just close the `merge.bat` window, download the architecture's appropriate tokenizer (head to the Huggingface page of one of the architecture's models and download it from the file list), put it into your output folder, and use the `quantize.bat` file to quantize instead.
