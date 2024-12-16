@@ -4,3 +4,6 @@ outputPath: ""
 llamacppBinPath: ""
 llamacppPath: ""
 useCUDA: false
+
+# required for updatedependencies.bat
+mergekitPath: ""
