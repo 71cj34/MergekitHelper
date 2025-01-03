@@ -21,8 +21,8 @@ Simple batch-Python utility to merge, quantize, and count parameters.
 3. Clone llamacpp with `git clone https://github.com/ggerganov/llama.cpp` or an analogue into a folder of your choice.
 4. Download and unzip MergekitHelper from the releases section.
 5. Set up paths in the `settings.yaml` file in the MergekitHelper folder.
-	- condaPath (folder): where your anaconda installation is.
 	- condaPath (folder): where your anaconda installation is. **Make sure you have the `transformers` library installed on your base conda environment.** (Not sure? Use the Windows search bar to find a program called "Anaconda Prompt" and type `conda list`. If `transformers` isn't there, type `conda install transformers`.)
+		- This is the typical value you should put here: `C:/Users/YOUR_USER_HERE/miniconda3/`
 	- mergekitConfigPath (path ending in *.yaml): where your mergekit config.yaml file is. This file determines the settings for your merge.
 	- outputPath (folder): where you want to output your finished merges.
 	- llamacppBinPath (folder): where your llamacpp binaries are (the folder you downloaded from the llamacpp releases section).
@@ -45,6 +45,8 @@ Also included is a batch file to quantize only without the merging  (`quantize.b
 **v1.1.1** (Dec 13 2024): Add new `skipF16` option to `quantize.bat` to skip the HF to GGUF conversion step. v1.1.0 accidentally pushed a staging version of merge.bat with experimental support for other package managers, but it seems to still work on my machine so it's staying there. Keep in mind that support for other package managers is still **beta**. Fixed issue with `ParamCount` not correctly updating for `quantize.bat`, fixed ambiguous pauses in `merge.bat`, and added debug statements to help resolve runtime errors all around.
 
 **v1.1.2** (Dec 16 2024): Add new `updatedependencies.bat` file to `git pull` llamacpp and mergekit. Requires you to fill a new setting in `settings.yml`. 
+
+**v1.1.3** (Jan 02 2025): Happy New Year! Maintenance changes: remove ugly dev stopgaps, and add `uploadtohub.py`, allowing you to upload files to HuggingFace straight from your terminal! Requires you to be signed in to `huggingface-cli` using a huggingface token.
 
 # Known Issues
 Sometimes, mergekit won't create the `tokenizer.json` file properly. I have no clue why this happens, but it seems more prominent on Gemma-based models. Just close the `merge.bat` window, download the architecture's appropriate tokenizer (head to the Huggingface page of one of the architecture's models and download it from the file list), put it into your output folder, and use the `quantize.bat` file to quantize instead.

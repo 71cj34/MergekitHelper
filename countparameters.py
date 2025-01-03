@@ -38,7 +38,7 @@ list_params = list(inter_params)
 
 if list_params[0] in ["3", "7", "8", "9"]:
     del list_params[1:]
-elif list_params[0:2] in ["13", "20", "33", "34", "70"]:
+elif list_params[0:2] in ["12", "13", "14", "20", "33", "34", "70"]:
     del list_params[2:]
 elif list_params[0:3] in ["101", "120"]:
     del list_params[3:]
